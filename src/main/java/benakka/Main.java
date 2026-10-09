@@ -15,10 +15,12 @@ public class Main {
         observable.subscribe(o1);
         observable.subscribe(o2);
 
-        observable.subscribe((newSate) -> {
+        observable.subscribe((o) -> {
+            if(o instanceof ObservableImpl obs){
                 System.out.println("++++++++++++ Obs Impl 3 ++++++++");
-                System.out.println("Res = "+ newSate * Math.cos(newSate));
+                System.out.println("Res = "+ obs.getState() * Math.cos(obs.getState()));
                 System.out.println("++++++++++++++++++++++++++++++++");
+            }
         });
 
         observable.setState(60);
